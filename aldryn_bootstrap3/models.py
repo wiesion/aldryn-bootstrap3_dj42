@@ -888,7 +888,7 @@ class Bootstrap3CarouselSlideFolderPlugin(CMSPlugin):
     http://getbootstrap.com/javascript/#carousel
     """
 
-    folder = filer.fields.folder.FilerFolderField(verbose_name=_("Folder"), on_delete=models.SET_NULL)
+    folder = filer.fields.folder.FilerFolderField(verbose_name=_("Folder"), on_delete=models.CASCADE)
     classes = model_fields.Classes()
 
     cmsplugin_ptr = model_fields.CMSPluginField()
