@@ -4,6 +4,7 @@ from __future__ import unicode_literals, absolute_import
 import django.forms.widgets
 from django.template.loader import render_to_string
 
+from aldryn_bootstrap3.compat import RadioFieldRenderer
 from .conf import settings
 
 
@@ -14,7 +15,7 @@ class SelectFieldCompatMixin(object):
 
     @property
     def renderer(self):
-        class Renderer(django.forms.widgets.RadioFieldRenderer):
+        class Renderer(RadioFieldRenderer):
             template_name = self.template_name
 
             def render(self):
