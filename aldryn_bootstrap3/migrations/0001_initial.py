@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 
-from django.db import models, migrations
+import cms.models.fields
+import django.db.models.deletion
+import djangocms_text_ckeditor.fields
 import filer.fields.file
 import filer.fields.folder
 import filer.fields.image
+from django.db import models, migrations
+
 import aldryn_bootstrap3.model_fields
-import djangocms_text_ckeditor.fields
-import django.db.models.deletion
-import cms.models.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("filer", "0002_auto_20150606_2003"),
         ("cms", "0011_auto_20150419_1006"),
@@ -717,7 +717,12 @@ class Migration(migrations.Migration):
                         blank=True,
                     ),
                 ),
-                ("folder", filer.fields.folder.FilerFolderField(verbose_name="folder", to="filer.Folder")),
+                (
+                    "folder",
+                    filer.fields.folder.FilerFolderField(
+                        verbose_name="folder", to="filer.Folder", on_delete=models.CASCADE
+                    ),
+                ),
             ],
             options={"abstract": False,},
             bases=("cms.cmsplugin",),
