@@ -1,11 +1,10 @@
 from django.forms.utils import flatatt
-from django.utils.encoding import python_2_unicode_compatible, force_text
+from django.utils.encoding import force_text
 from django.utils.html import html_safe, format_html
 from django.utils.safestring import mark_safe
 
 
 @html_safe
-@python_2_unicode_compatible
 class SubWidget(object):
     """
     This class is only needed for Django >= 1.11 compatibility
@@ -27,7 +26,6 @@ class SubWidget(object):
 
 
 @html_safe
-@python_2_unicode_compatible
 class ChoiceInput(SubWidget):
     """
     This class is only needed for Django >= 1.11 compatibility
@@ -98,7 +96,6 @@ class RadioChoiceInput(ChoiceInput):
 
 
 @html_safe
-@python_2_unicode_compatible
 class ChoiceFieldRenderer(object):
     """
     This class is only needed for Django >= 1.11 compatibility

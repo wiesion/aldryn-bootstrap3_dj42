@@ -4,18 +4,20 @@ sudo: false
 
 env:
   - TOX_ENV=flake8
-  - TOX_ENV=py27-latest
-  - TOX_ENV=py34-latest
-  # Django 1.8
-  - TOX_ENV=py27-dj18-cms34
-  - TOX_ENV=py27-dj18-cms33
-  - TOX_ENV=py34-dj18-cms34
-  - TOX_ENV=py34-dj18-cms33
-  # Django 1.9
-  - TOX_ENV=py27-dj19-cms34
-  - TOX_ENV=py27-dj19-cms33
-  - TOX_ENV=py34-dj19-cms34
-  - TOX_ENV=py34-dj19-cms33
+  - TOX_ENV=py37-latest
+  - TOX_ENV=py38-latest
+  # Django 2.2
+  - TOX_ENV=py37-dj22-cms35
+  - TOX_ENV=py37-dj22-cms36
+  - TOX_ENV=py37-dj22-cms37
+  - TOX_ENV=py37-dj22-cms38
+  - TOX_ENV=py37-dj22-cms39
+  - TOX_ENV=py38-dj22-cms35
+  - TOX_ENV=py38-dj22-cms36
+  - TOX_ENV=py38-dj22-cms37
+  - TOX_ENV=py38-dj22-cms38
+  - TOX_ENV=py38-dj22-cms39
+
 
 install:
   - pip install tox coverage
