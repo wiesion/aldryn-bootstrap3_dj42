@@ -3,27 +3,22 @@
 
 from functools import partial
 
+import cms.models
+import cms.models.fields
 import django.db.models
 import django.forms
-
+import filer.fields.file
+import filer.fields.image
+from cms.models.pluginmodel import CMSPlugin
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
-
 from django.utils.encoding import force_text
-
-import cms.models
-import cms.models.fields
-from cms.models.pluginmodel import CMSPlugin
-
-import filer.fields.file
-import filer.fields.image
-
+from django.utils.translation import ugettext, ugettext_lazy as _
 from djangocms_attributes_field.fields import AttributesField
 
-from .conf import settings
 from . import fields, constants
+from .conf import settings
 
 
 def get_additional_styles():
@@ -148,7 +143,9 @@ class LinkMixin(models.Model):
             ref_page = self.link_page
             link = ref_page.get_absolute_url()
 
-            if ref_page.site_id != getattr(self.page, "site_id", None):
+            if not getattr(ref_page, "site_id", None) is None and getattr(ref_page, "site_id", None) != getattr(
+                self.page, "site_id", None
+            ):
                 ref_site = Site.objects._get_site_by_id(ref_page.site_id)
                 link = "//{}{}".format(ref_site.domain, link)
         elif self.link_url:
