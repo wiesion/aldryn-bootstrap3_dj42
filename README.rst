@@ -1,9 +1,32 @@
 **Resurrected**
 
+.. image:: http://img.shields.io/pypi/v/aldryn-bootstrap3-resurrected.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/aldryn-bootstrap3-resurrected/
+    :alt: Latest Version
+
+.. image:: http://img.shields.io/pypi/dm/aldryn-bootstrap3-resurrected.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/aldryn-bootstrap3-resurrected/
+    :alt: Downloads
+
+.. image:: http://img.shields.io/pypi/l/aldryn-bootstrap3-resurrected.svg?style=flat-square
+    :target: https://pypi.python.org/pypi/aldryn-bootstrap3-resurrected/
+    :alt: License
+
+.. image:: https://img.shields.io/badge/Donate-PayPal-green.svg
+   :target: https://paypal.me/avryhof?country.x=US&locale.x=en_US
+   :alt: Donate
+
+
 While this has been deprecated by Divio/Aldryn... I have resurrected it so we
 can upgrade some old applications still using it.
 
 ``pip install aldryn-bootstrap3-resurrected``
+
+*Resurrected DjangoCMS Projects*
+
+* https://pypi.org/project/aldryn-bootstrap3-resurrected/
+* https://pypi.org/project/cmsplugin-filer-resurrected/
+* https://pypi.org/project/djangocms-forms-maintained/
 
 **Deprecated**
 
