@@ -5,6 +5,12 @@ can upgrade some old applications still using it.
 
 ``pip install aldryn-bootstrap3-resurrected``
 
+*Resurrected DjangoCMS Projects*
+
+* https://pypi.org/project/aldryn-bootstrap3-resurrected/
+* https://pypi.org/project/cmsplugin-filer-resurrected/
+* https://pypi.org/project/djangocms-forms-maintained/
+
 **Deprecated**
 
 This project has been succeeded by `djangocms-bootstrap4 <https://github.com/divio/djangocms-bootstrap4/>`_ , and is no longer supported.
