@@ -1,3 +1,10 @@
+**Resurrected**
+
+While this has been deprecated by Divio/Aldryn... I have resurrected it so we
+can upgrade some old applications still using it.
+
+``pip install aldryn-bootstrap3-resurrected``
+
 **Deprecated**
 
 This project has been succeeded by `djangocms-bootstrap4 <https://github.com/divio/djangocms-bootstrap4/>`_ , and is no longer supported.

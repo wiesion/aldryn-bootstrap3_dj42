@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals, absolute_import
+
 
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
@@ -14,6 +14,6 @@ class AldrynSitesConf(AppConf):
         # first value is the iconset identifier for http://victor-valencia.github.io/bootstrap-iconpicker/
         # second is the prefix for the css class
         # third is the pretty name shown in the select box
-        ('glyphicons', 'glyphicons', 'Glyphicons'),
-        ('fontawesome', 'fa', 'Fontawesome'),
+        ("glyphicons", "glyphicons", "Glyphicons"),
+        ("fontawesome", "fa", "Fontawesome"),
     )

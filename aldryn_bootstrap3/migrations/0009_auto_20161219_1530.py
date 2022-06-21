@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
 
 from django.db import migrations, models
 import filer.fields.folder
@@ -487,7 +487,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bootstrap3carouselslidefolderplugin',
             name='folder',
-            field=filer.fields.folder.FilerFolderField(verbose_name='Folder', to='filer.Folder'),
+            field=filer.fields.folder.FilerFolderField(verbose_name='Folder', to='filer.Folder', on_delete=models.CASCADE),
         ),
         migrations.AlterField(
             model_name='bootstrap3carouselslideplugin',
