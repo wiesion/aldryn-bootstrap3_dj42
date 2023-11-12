@@ -11,7 +11,7 @@ import filer.fields.folder
 from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.html import strip_tags
-from django.utils.translation import ugettext, ugettext_lazy as _, ungettext
+from django.utils.translation import gettext, gettext_lazy as _, ngettext
 from djangocms_attributes_field.fields import AttributesField
 
 from . import model_fields, constants
@@ -51,10 +51,10 @@ class Bootstrap3RowPlugin(CMSPlugin):
         instance = self.get_plugin_instance()[0]
 
         if not instance:
-            return ugettext("<empty>")
+            return gettext("<empty>")
 
         column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext("1 column", "%(count)i columns", column_count) % {"count": column_count}
+        column_count_str = ngettext("1 column", "%(count)i columns", column_count) % {"count": column_count}
 
         if self.classes:
             return "{} ({})".format(self.classes, column_count_str)
@@ -482,10 +482,10 @@ class Bootstrap3ListGroupPlugin(CMSPlugin):
         instance = self.get_plugin_instance()[0]
 
         if not instance:
-            return ugettext("<empty>")
+            return gettext("<empty>")
 
         column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext("1 item", "%(count)i items", column_count) % {"count": column_count}
+        column_count_str = ngettext("1 item", "%(count)i items", column_count) % {"count": column_count}
         return column_count_str
 
 
@@ -695,10 +695,10 @@ class Bootstrap3AccordionPlugin(CMSPlugin):
         instance = self.get_plugin_instance()[0]
 
         if not instance:
-            return ugettext("<empty>")
+            return gettext("<empty>")
 
         column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext("1 item", "%(count)i items", column_count) % {"count": column_count}
+        column_count_str = ngettext("1 item", "%(count)i items", column_count) % {"count": column_count}
         return column_count_str
 
     def __str__(self):

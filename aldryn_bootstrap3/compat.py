@@ -1,5 +1,5 @@
 from django.forms.utils import flatatt
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import html_safe, format_html
 from django.utils.safestring import mark_safe
 
@@ -40,8 +40,8 @@ class ChoiceInput(SubWidget):
         self.name = name
         self.value = value
         self.attrs = attrs
-        self.choice_value = force_text(choice[0])
-        self.choice_label = force_text(choice[1])
+        self.choice_value = force_str(choice[0])
+        self.choice_label = force_str(choice[1])
         self.index = index
         if "id" in self.attrs:
             self.attrs["id"] += "_%d" % self.index
@@ -81,7 +81,7 @@ class CheckboxChoiceInput(ChoiceInput):
 
     def __init__(self, *args, **kwargs):
         super(CheckboxChoiceInput, self).__init__(*args, **kwargs)
-        self.value = set(force_text(v) for v in self.value)
+        self.value = set(force_str(v) for v in self.value)
 
     def is_checked(self):
         return self.choice_value in self.value
@@ -92,7 +92,7 @@ class RadioChoiceInput(ChoiceInput):
 
     def __init__(self, *args, **kwargs):
         super(RadioChoiceInput, self).__init__(*args, **kwargs)
-        self.value = force_text(self.value)
+        self.value = force_str(self.value)
 
 
 @html_safe
@@ -148,7 +148,7 @@ class ChoiceFieldRenderer(object):
                 )
             else:
                 w = self.choice_input_class(self.name, self.value, self.attrs.copy(), choice, i)
-                output.append(format_html(self.inner_html, choice_value=force_text(w), sub_widgets=""))
+                output.append(format_html(self.inner_html, choice_value=force_str(w), sub_widgets=""))
         return format_html(
             self.outer_html, id_attr=format_html(' id="{}"', id_) if id_ else "", content=mark_safe("\n".join(output))
         )

@@ -8,7 +8,7 @@ import django.template
 import django.template.loader
 
 from django.forms.widgets import Media, TextInput, Textarea
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 import cms.forms.fields
 import cms.models

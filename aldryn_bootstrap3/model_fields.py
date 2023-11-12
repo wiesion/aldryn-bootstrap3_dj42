@@ -13,8 +13,8 @@ from cms.models.pluginmodel import CMSPlugin
 from django.contrib.sites.models import Site
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.encoding import force_text
-from django.utils.translation import ugettext, ugettext_lazy as _
+from django.utils.encoding import force_str
+from django.utils.translation import gettext, gettext_lazy as _
 from djangocms_attributes_field.fields import AttributesField
 
 from . import fields, constants
@@ -52,28 +52,7 @@ CMSPluginField = partial(
 )
 
 
-# Helper for:
-# Classes, LinkOrButton, Size, IntegerField
-class SouthMixinBase(object):
-    south_field_class = ""
-
-    def south_field_triple(self):
-        """Returns a suitable description of this field for South."""
-        if not self.south_field_class:
-            raise NotImplementedError("Please set south_field_class when " "using the south field mixin.")
-        # We'll just introspect ourselves, since we inherit.
-        from south.modelsinspector import introspector
-
-        field_class = self.south_field_class
-        args, kwargs = introspector(self)
-        # That's our definition!
-        return field_class, args, kwargs
-
-
-# Code here is mostly used in `models.py` and `migrations/`
-
-
-class Classes(django.db.models.TextField, SouthMixinBase):
+class Classes(django.db.models.TextField):
     default_field_class = fields.Classes
     south_field_class = "django.db.models.fields.TextField"
 
@@ -178,12 +157,12 @@ class LinkMixin(models.Model):
             "link_file",
         )
 
-        anchor_field_verbose_name = force_text(self._meta.get_field(anchor_field_name).verbose_name)
+        anchor_field_verbose_name = force_str(self._meta.get_field(anchor_field_name).verbose_name)
         anchor_field_value = getattr(self, anchor_field_name)
 
         link_fields = {key: getattr(self, key) for key in field_names}
         link_field_verbose_names = {
-            key: force_text(self._meta.get_field(key).verbose_name) for key in list(link_fields.keys())
+            key: force_str(self._meta.get_field(key).verbose_name) for key in list(link_fields.keys())
         }
         provided_link_fields = {key: value for key, value in list(link_fields.items()) if value}
 
@@ -214,13 +193,13 @@ class LinkMixin(models.Model):
                     )
 
 
-class LinkOrButton(django.db.models.fields.CharField, SouthMixinBase):
+class LinkOrButton(django.db.models.fields.CharField):
     default_field_class = fields.LinkOrButton
     south_field_class = "django.db.models.fields.CharField"
 
     def __init__(self, *args, **kwargs):
         if "verbose_name" not in kwargs:
-            kwargs["verbose_name"] = ugettext("Type")
+            kwargs["verbose_name"] = gettext("Type")
         if "max_length" not in kwargs:
             kwargs["max_length"] = 255
         if "blank" not in kwargs:
@@ -251,7 +230,7 @@ class Context(django.db.models.fields.CharField):
 
     def __init__(self, *args, **kwargs):
         if "verbose_name" not in kwargs:
-            kwargs["verbose_name"] = ugettext("Context")
+            kwargs["verbose_name"] = gettext("Context")
         if "max_length" not in kwargs:
             kwargs["max_length"] = 255
         if "blank" not in kwargs:
@@ -282,7 +261,7 @@ class Icon(django.db.models.CharField):
 
     def __init__(self, *args, **kwargs):
         if "verbose_name" not in kwargs:
-            kwargs["verbose_name"] = ugettext("Icon")
+            kwargs["verbose_name"] = gettext("Icon")
         if "max_length" not in kwargs:
             kwargs["max_length"] = 255
         if "blank" not in kwargs:
@@ -323,7 +302,7 @@ class Responsive(MiniText):
 
     def __init__(self, *args, **kwargs):
         if "verbose_name" not in kwargs:
-            kwargs["verbose_name"] = ugettext("Responsive")
+            kwargs["verbose_name"] = gettext("Responsive")
         if "blank" not in kwargs:
             kwargs["blank"] = True
         if "default" not in kwargs:
@@ -338,13 +317,13 @@ class Responsive(MiniText):
         return super(Responsive, self).formfield(**defaults)
 
 
-class Size(django.db.models.CharField, SouthMixinBase):
+class Size(django.db.models.CharField):
     default_field_class = fields.Size
     south_field_class = "django.db.models.fields.CharField"
 
     def __init__(self, *args, **kwargs):
         if "verbose_name" not in kwargs:
-            kwargs["verbose_name"] = ugettext("Context")
+            kwargs["verbose_name"] = gettext("Context")
         if "max_length" not in kwargs:
             kwargs["max_length"] = 255
         if "blank" not in kwargs:
@@ -369,7 +348,7 @@ class Size(django.db.models.CharField, SouthMixinBase):
         return super(Size, self).get_choices(**kwargs)
 
 
-class IntegerField(django.db.models.IntegerField, SouthMixinBase):
+class IntegerField(django.db.models.IntegerField):
     default_field_class = fields.Integer
     south_field_class = "django.db.models.fields.IntegerField"
 

@@ -4,11 +4,11 @@
 import json
 import warnings
 
-from django.conf.urls import url
+from django.urls import re_path
 from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponse
 from django.templatetags.static import static
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from cms.models import CMSPlugin
@@ -271,7 +271,7 @@ class Bootstrap3ImageCMSPlugin(CMSPluginBase):
 
     def get_plugin_urls(self):
         urlpatterns = [
-            url(r"^ajax_upload/(?P<pk>[0-9]+)/$", self.ajax_upload, name="bootstrap3_image_ajax_upload"),
+            re_path(r"^ajax_upload/(?P<pk>[0-9]+)/$", self.ajax_upload, name="bootstrap3_image_ajax_upload"),
         ]
         return urlpatterns
 

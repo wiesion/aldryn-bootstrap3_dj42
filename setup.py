@@ -23,6 +23,9 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
     "Topic :: Software Development :: Libraries :: Application Frameworks",
@@ -30,13 +33,13 @@ CLASSIFIERS = [
 ]
 
 setup(
-    name="aldryn-bootstrap3-resurrected",
+    name="aldryn-bootstrap3",
     version=__version__,
-    author="Divio AG / Updated by Amos Vryhof",
-    author_email="amos@vryhofresearch.com",
-    url="https://github.com/avryhof/aldryn-bootstrap3",
+    author="Divio AG",
+    author_email="info@divio.ch",
+    url="https://github.com/wiesion/aldryn-bootstrap3_dj42",
     license="BSD",
-    description=("Adds Bootstrap 3 components as plugins."),
+    description="Adds Bootstrap 3 components as plugins.",
     long_description=open("README.rst").read(),
     packages=find_packages(),
     include_package_data=True,
